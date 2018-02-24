@@ -283,6 +283,93 @@ def feladat_27():
             break
     print(db_poz, " pozitiv szam erkezett", '\n', db_neg, " negativ szam erkezett")
 
+def feladat_28(n):
+    lehetseges = int(math.sqrt(n))
+    print(lehetseges*lehetseges)
+
+def feladat_29(szam):
+    if 0<=szam<=12:
+        faktorialis = 1
+        i = 1
+        while i<=szam:
+            faktorialis*=i
+            i+=1
+        print(faktorialis)
+
+def feladat_30():
+    rand_datum = input("Adj egy datumot: ")
+    datum = rand_datum.split(".")
+    hanyadik = int(datum[2])
+    if datum[1] == "01":
+        print(hanyadik)
+    if datum[1] == "02":
+        hanyadik+=31
+        print(hanyadik)
+    if int(datum[0])%4 == 0 and int(datum[0])%100 != 0 or int(datum[0])%400 == 0:
+        if datum[1] == "03":
+            hanyadik = hanyadik + 31 + 29
+            print(hanyadik)
+        elif datum[1] == "04":
+            hanyadik = hanyadik + 31 + 29 + 31
+            print(hanyadik)
+        elif datum[1] == "05":
+            hanyadik = hanyadik + 31 + 29 + 31 + 30
+            print(hanyadik)
+        elif datum[1] == "06":
+            hanyadik = hanyadik + 31 + 29 + 31 + 30 + 31
+            print(hanyadik)
+        elif datum[1] == "07":
+            hanyadik = hanyadik + 31 + 29 + 31 + 30 + 31 + 30
+            print(hanyadik)
+        elif datum[1] == "08":
+            hanyadik = hanyadik + 31 + 29 + 31 + 30 + 31 + 30 + 31
+            print(hanyadik)
+        elif datum[1] == "09":
+            hanyadik = hanyadik + 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31
+            print(hanyadik)
+        elif datum[1] == "10":
+            hanyadik = hanyadik + 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31 + 30
+            print(hanyadik)
+        elif datum[1] == "11":
+            hanyadik = hanyadik + 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31
+            print(hanyadik)
+        elif datum[1] == "12":
+            hanyadik = hanyadik + 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30
+            print(hanyadik)
+    else:
+        if datum[1] == "03":
+            hanyadik = hanyadik + 31 + 28
+            print(hanyadik)
+        elif datum[1] == "04":
+            hanyadik = hanyadik + 31 + 28 + 31
+            print(hanyadik)
+        elif datum[1] == "05":
+            hanyadik = hanyadik + 31 + 28 + 31 + 30
+            print(hanyadik)
+        elif datum[1] == "06":
+            hanyadik = hanyadik + 31 + 28 + 31 + 30 + 31
+            print(hanyadik)
+        elif datum[1] == "07":
+            hanyadik = hanyadik + 31 + 28 + 31 + 30 + 31 + 30
+            print(hanyadik)
+        elif datum[1] == "08":
+            hanyadik = hanyadik + 31 + 28 + 31 + 30 + 31 + 30 + 31
+            print(hanyadik)
+        elif datum[1] == "09":
+            hanyadik = hanyadik + 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31
+            print(hanyadik)
+        elif datum[1] == "10":
+            hanyadik = hanyadik + 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30
+            print(hanyadik)
+        elif datum[1] == "11":
+            hanyadik = hanyadik + 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31
+            print(hanyadik)
+        elif datum[1] == "12":
+            hanyadik = hanyadik + 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30
+            print(hanyadik)
+
+
+
 
 def main():
     feladat_1(5, 10)
@@ -312,4 +399,7 @@ def main():
     feladat_25()
     feladat_26()
     feladat_27()
+    feladat_28(225)
+    feladat_29(0)
+    feladat_30()
 main()
