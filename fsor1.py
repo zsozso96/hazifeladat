@@ -368,7 +368,28 @@ def feladat_30():
             hanyadik = hanyadik + 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30
             print(hanyadik)
 
+def feladat_31(n):
+    ig = int(n/2)
+    for i in range(1, ig+1):
+        if n%i == 0:
+            print(i, end=", ")
+    print(100, '\n')
 
+def feladat_32(k):
+    n1 = int(input("mettol?: "))
+    n2 = int(input("meddig?: "))
+    for i in range(n1, n2+1):
+        if i%k == 0:
+            print(i, end=" ")
+
+def feladat_38():
+    szam = input("Adj egy max 9 szamjegyu egesz szamot! ")
+    szamjegy = input("adj meg egy szamjegyet! ")
+    db = 0
+    for i in range(len(szam)):
+        if szamjegy == szam[i]:
+            db+=1
+    print(db)
 
 
 def main():
@@ -402,4 +423,7 @@ def main():
     feladat_28(225)
     feladat_29(0)
     feladat_30()
+    feladat_31(100)
+    feladat_32(2)
+    feladat_38()
 main()
