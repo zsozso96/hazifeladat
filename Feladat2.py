@@ -76,6 +76,64 @@ def feladat_9():
         perc+=1
     print(perc-2)
 
+def feladat_10():
+    try:
+        fajl=open("be.txt", mode="r")
+        max = 0
+        for sor in fajl:
+            sor = sor.strip()
+            hossz = 0
+            if sor[0].isupper():
+                hossz+=len(sor)
+                if max < hossz:
+                    max = hossz
+        print(max)
+    except OSError as e:
+        print(e)
+    except Exception as e:
+        print(e)
+    finally:
+        fajl.close()
+
+def feladat_11():
+    try:
+        fajl=open("be.txt", mode="r")
+        min = 5000
+        for sor in fajl:
+            sor = sor.strip()
+            hossz = 0
+            if sor[len(sor)-1] == "!" or sor[len(sor)-1] == "?" or sor[len(sor)-1] == ".":
+                hossz += len(sor)
+                if min > hossz:
+                    min = hossz
+        print(min)
+    except OSError as e:
+        print(e)
+    except Exception as e:
+        print(e)
+    finally:
+        fajl.close()
+
+def feladat_15():
+    try:
+        fajl1 = open("be.txt", mode="r")
+        fajl2 = open("ki.txt", mode="w")
+        str = ""
+        for sor in fajl1:
+            sor = sor.strip()
+            str+=sor
+            if sor == "":
+                break
+        print(str)
+    except OSError as e:
+        print(e)
+    except Exception as e:
+        print(e)
+    finally:
+        fajl1.close()
+        fajl2.close()
+
+
 def main():
     print(feladat_1(8))
     print(feladat_2(5))
@@ -85,4 +143,7 @@ def main():
     print(feladat_6(807, 858))
     feladat_8(21)
     feladat_9()
+    feladat_10()
+    feladat_11()
+    feladat_15()
 main()
