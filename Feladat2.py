@@ -1,3 +1,5 @@
+import codecs as cod
+
 def feladat_1(n):
     osztok_szama = 0
     szam = int(n)
@@ -124,7 +126,122 @@ def feladat_15():
             str+=sor
             if sor == "":
                 break
-        print(str)
+        fajl2.write(str)
+    except OSError as e:
+        print(e)
+    except Exception as e:
+        print(e)
+    finally:
+        fajl1.close()
+        fajl2.close()
+
+def feladat_18():
+    try:
+        fajl = open("be.txt", mode="r")
+        sor = fajl.readline()
+        sor = sor.strip()
+        sor = sor.split()
+        score = sor[3].split(":")
+        pont1 = int(score[0])
+        pont2 = int(score[1])
+        team1 = sor[0]
+        team2 = sor[2]
+        #print(team2, pont2)
+        for sor in fajl:
+            sor = sor.strip()
+            sor = sor.split()
+            score = sor[3].split(":")
+            pont3 = int(score[0])
+            pont4 = int(score[1])
+            if sor[0] == team1:
+                pont1+=pont3
+                pont2+=pont4
+            else:
+                pont1+=pont4
+                pont2+=pont3
+        if pont1>pont2:
+            print(team1, "nyert")
+        elif pont2>pont1:
+            print(team2, "nyert")
+        else:
+            print("dontetlen")
+    except OSError as e:
+        print(e)
+    except Exception as e:
+        print(e)
+    finally:
+        fajl.close()
+
+def feladat_19():
+    try:
+        fajl = open("be.txt", mode="r")
+        max = 0
+        for sor in fajl:
+            sor = sor.strip()
+            sor = sor.split()
+            latogatok = int(sor[1])
+            if latogatok>max:
+                max=latogatok
+                tmp = sor[0]
+        print(tmp)
+    except OSError as e:
+        print(e)
+    except Exception as e:
+        print(e)
+    finally:
+        fajl.close()
+
+def feladat_20():
+    try:
+        fajl = cod.open("be.txt", encoding="utf-8", mode="r")
+        max = 0
+        for sor in fajl:
+            sor = sor.strip()
+            sor = sor.split(";")
+            lakosok = int(sor[2])
+            if lakosok>max:
+                max=lakosok
+                tmp = sor[0]
+        print(tmp)
+    except OSError as e:
+        print(e)
+    except Exception as e:
+        print(e)
+    finally:
+        fajl.close()
+
+def feladat_21():
+    try:
+        fajl1 = open("be.txt", mode="r")
+        fajl2 = open("ki.txt", mode="w")
+        for sor in fajl1:
+            sor = sor.strip()
+            sor = sor.split(";")
+            sum = 0
+            for i in range(1, len(sor)):
+                sum+=int(sor[i])
+            fajl2.write("%s %d %s" % (sor[0], sum, '\n'))
+    except OSError as e:
+        print(e)
+    except Exception as e:
+        print(e)
+    finally:
+        fajl1.close()
+        fajl2.close()
+
+def feladat_22():
+    try:
+        fajl1 = open("be.txt", mode="r")
+        fajl2 = open("ki.txt", mode="w")
+        min = 10000
+        for sor in fajl1:
+            sor = sor.strip()
+            sor = sor.split(";")
+            ido = float(sor[2])
+            if ido<min:
+                min=ido
+                tmp = sor[0]
+        fajl2.write(tmp)
     except OSError as e:
         print(e)
     except Exception as e:
@@ -146,4 +263,9 @@ def main():
     feladat_10()
     feladat_11()
     feladat_15()
+    feladat_18()
+    feladat_19()
+    feladat_20()
+    feladat_21()
+    feladat_22()
 main()
