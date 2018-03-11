@@ -1,4 +1,5 @@
 import codecs as cod
+import sys
 
 def feladat_1(n):
     osztok_szama = 0
@@ -146,7 +147,6 @@ def feladat_18():
         pont2 = int(score[1])
         team1 = sor[0]
         team2 = sor[2]
-        #print(team2, pont2)
         for sor in fajl:
             sor = sor.strip()
             sor = sor.split()
@@ -220,7 +220,7 @@ def feladat_21():
             sum = 0
             for i in range(1, len(sor)):
                 sum+=int(sor[i])
-            fajl2.write("%s %d %s" % (sor[0], sum, '\n'))
+            fajl2.write("%s %d\n" % (sor[0], sum))
     except OSError as e:
         print(e)
     except Exception as e:
@@ -250,6 +250,132 @@ def feladat_22():
         fajl1.close()
         fajl2.close()
 
+def feladat_23():
+    try:
+        fajl=open("be.txt", mode="r")
+        sor = fajl.readline()
+        sor = sor.strip()
+        tavolsag = 0
+        for sor in fajl:
+            sor = sor.strip()
+            if int(sor)<tavolsag:
+                print("NO")
+                break
+            elif int(sor) == 1000:
+                print("YES")
+            tavolsag = int(sor)
+    except OSError as e:
+        print(e)
+    except Exception as e:
+        print(e)
+    finally:
+        fajl.close()
+
+def feladat_24():
+    try:
+        fajl=open("be.txt", mode="r")
+        sor = fajl.readline()
+        sor = sor.strip()
+        ido = int(sor)
+        sor = fajl.readline()
+        sor = sor.strip()
+        teki_tav = sor.split()
+        tav1 = 0
+        for i in range(ido):
+            tav1 += int(teki_tav[i])
+        sor = fajl.readline()
+        sor = sor.strip()
+        csiga_tav = sor.split()
+        tav2 = 0
+        for i in range(ido):
+            tav2 += int(csiga_tav[i])
+        if tav1>tav2:
+            print(tav1*2)
+            print("TURTLE")
+        elif tav2>tav1:
+            print(tav2*2)
+            print("SNAIL")
+        else:
+            print(tav1*2)
+            print("DRAW")
+    except OSError as e:
+        print(e)
+    except Exception as e:
+        print(e)
+    finally:
+        fajl.close()
+
+def feladat_25():
+    try:
+        fajl=cod.open("szotar.txt", mode="r")
+        sor = fajl.readline()
+        sor = sor.strip()
+        ossz_sor = int(sor)
+        lista1 = []
+        lista2 = []
+        sor = fajl.readline()
+        sor = sor.strip()
+        sor = sor.split(":")
+        lista1.append(sor[0])
+        lista2.append(sor[1])
+        angol = 1
+        magyar = 1
+        for i in range(2,ossz_sor+1):
+            sor = fajl.readline()
+            sor = sor.strip()
+            sor = sor.split(":")
+            if not sor[0] in lista1:
+                angol+=1
+                lista1.append(sor[0])
+            if not sor[1] in lista2:
+                magyar+=1
+                lista2.append(sor[1])
+        print(angol)
+        print(magyar)
+    except OSError as e:
+        print(e)
+    except Exception as e:
+        print(e)
+    finally:
+        fajl.close()
+
+def feladat_26():
+    try:
+        fajl1 = cod.open(sys.argv[1], encoding="utf-8", mode="r")
+        fajl2 = cod.open(sys.argv[2], encoding="utf-8", mode="r")
+        fajl3 = cod.open("ki.txt", encoding="utf-8", mode="w")
+        ossz1 = 1
+        ossz2 = 1
+        lista = []
+        line = fajl2.readline()
+        line = line.strip()
+        line = line.split(";")
+        lista.append(line[0])
+        for line in fajl2:
+            line = fajl2.readline()
+            line = line.strip()
+            line = line.split(";")
+            ossz2+=1
+            lista.append(line[0])
+        sor = fajl1.readline()
+        sor = sor.strip()
+        sor = sor.split(";")
+        for sor in fajl1:
+            sor = fajl1.readline()
+            sor = sor.strip()
+            sor = sor.split(";")
+            ossz1+=1
+            if not sor[0] in lista:
+                print(sor)
+        fajl3.write("%d %d" % (ossz1,ossz2))
+    except OSError as e:
+        print(e)
+    except Exception as e:
+        print(e)
+    finally:
+        fajl1.close()
+        fajl2.close()
+        fajl3.close()
 
 def main():
     print(feladat_1(8))
@@ -268,4 +394,8 @@ def main():
     feladat_20()
     feladat_21()
     feladat_22()
+    feladat_23()
+    feladat_24()
+    feladat_25()
+    feladat_26() #nem jo meg
 main()
